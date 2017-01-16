@@ -6,7 +6,9 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '~> 2.4.0'
 end
-
+gem 'rmagick', '= 2.13.2'
+gem 'term-ansicolor', '= 1.3.2'
+gem 'json', '= 1.8.3'
 gem 'bcrypt', '= 3.1.10'
 gem 'mysql2', '= 0.3.20'
 
@@ -22,7 +24,7 @@ group :production do
    gem 'gko_blog'
  end
  #gem 'gko_realty', :git => 'git@github.com:jdfdesign/gko-realty.git', :tag => "v0.4.91"
- gem 'gko_realty', '= 0.4.92', :git => 'git@github.com:regisbruggheman/gko-realty.git'
+ gem 'gko_realty', :git => 'git@github.com:regisbruggheman/gko_realty.git'
 end
 
 # group :development do
