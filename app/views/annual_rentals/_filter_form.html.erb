@@ -1,0 +1,78 @@
+<%
+@annual_rental_section ||= site.annual_rental_lists.live.first
+@annual_rentals ||= @annual_rental_section.annual_rentals.published.with_translations(I18n.locale).order('content_translations.title ASC')
+@parent_categories ||= @annual_rental_section.categories.with_translations(I18n.locale).order('category_translations.title ASC')
+@parent_stickers ||= @annual_rental_section.stickers.with_translations(I18n.locale).order('sticker_translations.name ASC')
+if @annual_rental_section
+%>
+  <%= simple_form_for(:search,
+    :url => @annual_rental_section.public_url,
+    :method => :get,
+    :html => {
+      :class => "form-search" }) do |form| %>
+  <%= form.input :page,
+  :as => :hidden,
+  :input_html => { :value => "1" } %>
+    <div class="row first-row">
+      <div class="col-md-3">
+        <div class='form-group'>
+          <%= form.input :with_category,
+          :collection => @parent_categories,
+          :selected => params[:search].present? ? params[:search][:with_category] : nil,
+          :label_method => :title,
+          :value_method => :id,
+          :prompt => "Type",
+          :label => false,
+          :as => :select,
+          :input_html => { :class => "form-control" } %>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class='form-group'>
+          <%= render "shared/bedroom_count_select", :f => form %>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <%= render "shared/area_select", :f => form %>
+      </div>
+      <div class="col-md-3">
+        <div class='form-group'>
+          <%= form.input :with_sticker,
+          :collection => @parent_stickers,
+          :selected => params[:search].present? ? params[:search][:with_sticker] : nil,
+          :label_method => :name,
+          :value_method => :id,
+          :prompt => "Options",
+          :label => false,
+          :as => :select,
+          :input_html => { :class => "form-control" } %>
+        </div>
+      </div>
+    </div>
+    <div class="row last-row">
+      <div class="col-md-6">
+        <div class='form-group no-margin'>
+          <%= form.input :price,
+          :collection => ["0 - 999 €", "1000 - 1499 €", "1500 - 1999 €", "2000 - 2499 €", "2500 - 2999 €", "3000 - 3499 €", "3500 - 3999 €", "4000 - 4999 €", "5000 - 5999 €", "6000 - 7999 €", "8000 - 10 000 €"],
+          :selected => params[:search].present? ? params[:search][:price] : nil,
+          :prompt => t(:'helpers.select.price_per_month.prompt').html_safe,
+          :label => false,
+          :as => :select,
+          :input_html => { :class => "form-control" } %>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <%= form.input :order,
+        :collection => [[:title, :by_title], [:price, :by_price]],
+        :selected => params[:search].present? ? params[:search][:order] : nil,
+        :prompt => t(:'helpers.select.order.prompt').html_safe,
+        :label => false,
+        :as => :select,
+        :input_html => { :class => "form-control" } %>
+     </div>
+      <div class="col-md-3">
+       <%= form.button 'submit', t('search'), :class => "submit-search btn btn-pink-dark" %>
+     </div>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,119 @@
+<%
+active = local_assigns.has_key?(:tab) ? tab : 'rental'
+@rent_section ||= site.rental_property_lists.live.first
+price_options = []
+price_options << t(:'realty.filters.price.less_than', :price => 4000)
+price_options << "4000 - 10000"
+price_options << t(:'realty.filters.price.more_than', :price => 10000)
+price_options.compact.join("\n").html_safe
+@vacation_style_cat ||= site.categories.named("lifestyles")
+@lifestyle_categories ||= @vacation_style_cat.children
+@rental_properties ||= @rent_section.rental_properties.published.in_city(site.cities.first).with_translations(I18n.locale).order('content_translations.title ASC')
+
+@sale_section ||= site.sale_property_lists.live.first
+
+if @rent_section && @sale_section
+%>
+<%= render "search_button" %>
+<div class="panel search-panel hidden-print">
+  <div class="collapse" id="collapseExample" role="tabpanel">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation"><a href="#rent" aria-controls="rent" role="tab" data-toggle="tab">Properties for rent</a></li>
+      <li role="presentation"><a href="#sale" aria-controls="sale" role="tab" data-toggle="tab">Properties for sale</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane tab-pane-rentals" id="rent">
+        <%= simple_form_for(:search,
+          :url => @rent_section.public_url,
+          :method => :get,
+          :data => {:remote => true },
+          :html => {:class => "form-search"}) do |form| %>
+        <%= form.input :page,
+        :as => :hidden,
+        :input_html => { :value => "1" } %>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-2">
+              <%= render "shared/area_select", :f => form %>
+            </div>
+            <div class="col-md-2">
+              <div class='form-group'>
+                <%= form.input :price,
+                :collection => price_options,
+                :selected => params[:search].present? ? params[:search][:price] : nil,
+                :prompt => t(:'helpers.select.price.prompt').html_safe,
+                :label => false,
+                :as => :select,
+                :input_html => { :class => "form-control" } %>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <%= render "shared/bedroom_count_select", :f => form %>
+            </div>
+            <div class="col-md-2">
+              <div class='form-group no-margin'>
+                <%= form.input :with_category,
+                :collection => @lifestyle_categories,
+                :selected => params[:search].present? ? params[:search][:with_category] : nil,
+                :label_method => :title,
+                :value_method => :id,
+                :prompt => @vacation_style_cat.title,
+                :label => false,
+                :as => :select,
+                :input_html => { :class => "form-control" } %>
+              </div>
+            </div>
+            <div class="col-md-2">
+             <%= form.button 'submit', t('search'), :class => "search" %>
+           </div>
+           <div class="col-md-2">
+            <%= link_to(@rent_section.public_url, :class => "btn btn-link") do %>
+            <i class='fa fa-long-arrow-right'></i> <%= "View all listing" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  <div role="tabpanel" class="tab-pane tab-pane-sales" id="sale">
+    <%= simple_form_for(:search,
+      :url => @sale_section.public_url,
+      :method => :get,
+      :data => {:remote => true },
+      :html => {:class => "form-search"}) do |form| %>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2 col-md-offset-1">
+            <%= render "shared/area_select", :f => form %>
+          </div>
+          <div class="col-md-2">
+            <%= render "shared/bedroom_count_select", :f => form %>
+          </div>
+          <div class="col-md-2">
+            <div class='form-group no-margin'>
+            <%= form.select :with_category,
+            options_from_collection_for_select(@sale_section.categories, :id, :title, params[:search].present? ? params[:search][:with_category] : ''),
+            { :prompt => t(:'helpers.select.category.prompt').html_safe },
+            { :class => "form-control" } %>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <%= form.button 'submit', t('search'), :class => "search" %>
+          </div>
+          <div class="col-md-2">
+            <%= link_to(@sale_section.public_url, :class => "btn btn-link") do %>
+              <i class='fa fa-long-arrow-right'></i> <%= "View all listing" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
+
+<% end %>

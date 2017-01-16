@@ -1,0 +1,55 @@
+<!-- Tab panes -->
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane tab-pane-rentals" id="rent">
+    <%= simple_form_for(:search,
+      :url => @rent_section.public_url,
+      :method => :get,
+      :data => {:remote => true },
+      :html => {:class => "form-search"}) do |form| %>
+    <%= form.input :page,
+    :as => :hidden,
+    :input_html => { :value => "1" } %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+          <%= render "shared/area_select", :f => form %>
+        </div>
+        <div class="col-md-2">
+          <div class='form-group'>
+            <%= form.input :price,
+            :collection => price_options,
+            :selected => params[:search].present? ? params[:search][:price] : nil,
+            :prompt => t(:'helpers.select.price.prompt').html_safe,
+            :label => false,
+            :as => :select,
+            :input_html => { :class => "form-control" } %>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <%= render "shared/bedroom_count_select", :f => form %>
+        </div>
+        <div class="col-md-2">
+          <div class='form-group'>
+            <%= form.input :with_category,
+            :collection => @lifestyle_categories,
+            :selected => params[:search].present? ? params[:search][:with_category] : nil,
+            :label_method => :title,
+            :value_method => :id,
+            :prompt => @vacation_style_cat.title,
+            :label => false,
+            :as => :select,
+            :input_html => { :class => "form-control" } %>
+          </div>
+        </div>
+        <div class="col-md-2">
+         <%= form.button 'submit', t('search'), :class => "search" %>
+       </div>
+       <div class="col-md-2">
+        <%= link_to(@rent_section.public_url, :class => "btn btn-link") do %>
+        <i class='fa fa-long-arrow-right'></i> <%= "View all listing" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

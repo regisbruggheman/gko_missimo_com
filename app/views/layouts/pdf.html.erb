@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <meta name='pdfkit-footer_html' content="application/footer.pdf.erb" />
+    <link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type='text/css'>
+    <%= wicked_pdf_stylesheet_link_tag "public" -%>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <%= wicked_pdf_javascript_include_tag "public" -%>
+  </head>
+  <body class="pdf">
+    <div class="container">
+      <%= yield %>
+    </div>
+    <%= render "footer" %>
+  </body>
+</html>

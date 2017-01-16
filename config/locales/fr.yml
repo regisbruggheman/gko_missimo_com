@@ -1,0 +1,55 @@
+fr:
+  share_on_facebook: "Partager sur Facebook"
+  week: semaine
+  name: Nom
+  price: Prix
+  year: an
+  listing: Listing
+  searching: 'Vous recherchez…'
+  want_to_rent: 'Je veux louer'
+  want_to_buy: 'Je veux acheter'
+  listing: Listing
+  language: Langage
+  description: Description
+  details: Details
+  informations: Informations
+  home_agency: "<strong>MISSIMMO</strong> est une agence immobilière qui vous propose <strong>un service personnalisé</strong>
+par l’écoute et la recherche de <strong>votre satisfaction</strong> dans l’intérêt mutuel des parties. MISSIMMO adhère au premier Syndicat Professionnel de l’Immobilier, la FNAIM, qui regroupe plus de 10 000 agences en France et dans les DOM-TOM mais n’en reste pas moins une <strong>agence à taille humaine.</strong>"
+  home_sb_title: Bienvenue à Saint-Barth
+  home_sb: "<strong>Nichée entre la mer des Caraïbes et l'Océan Atlantique, au nord de l'Arc Antillais</strong> St-Barth, peitie île de 25 km2 allie avec bonheur modernisme et traditions. Elle a su préserver le charme de sa nature sauvage et son environnement précieux.<br\>St-Barth c'est aussi 17 plages, une capitale, Gustavia, des villages, une hostellerie de luxe mais aussi des auberges de charme pour le plus grand plaisir de ses visiteurs."
+  home_sb_btn: Découvrir
+  realty:
+    coup_de_cœur: Coup de cœur
+    view_all_promotions: Voir toutes les promotions
+    price_from: "À partir de "
+    price_notes: "Tout les prix sont basés sur 7 nuits et incluent l’accueil à l’arrivée et l’accompagnement à la villa/appartement, un cadeau de bienvenue ainsi que le service de ménage tout les jours (sauf Dimanche et jours fériés). La conversion de devise est fournie à titre d’information uniquement et est sujette à confirmation auprès de nos agents. Veuillez noter qu’il faut ajouter 10% de frais de service et 5% de taxe de séjour aux tarifs indiqués."
+    specificities: Specificités
+    placeholders:
+      email: Email
+      name: Nom
+      phone: Téléphone
+      subject: Sujet
+      message: Message
+    metas:
+      bedroom_count: Nombre de chambres
+      bathroom_count: Nombre de salles de bain
+      room_count: Nb pièces
+      min_price: Prix min.
+
+  sale_properties:
+    collection:
+      empty: "Nous avons de nombreux biens à vous proposer, n'hésitez pas à nous contacter."
+  helpers:
+    select:
+      lifestyle:
+        prompt: "lifestyles"
+      order:
+        prompt: "Trier par"
+      price_per_week:
+        prompt: "Prix par semaine"
+      price_per_month:
+        prompt: "Prix par mois"
+      price:
+        prompt: "Prix"
+      by_name:
+        prompt: "Nom"

@@ -1,0 +1,170 @@
+$logo-height-sm: 107px;
+$logo-height-sm-min: 107px;
+
+
+/* IMPORTS
+-------------------------------------------------- */
+@import "theme/variables";
+
+$blue: $brand-primary;
+$green: $brand-success;
+$pink: #ed46a2;
+$green-dark: #559300;
+$blue-dark: #0099c5;
+
+
+@import "bootstrap/bootstrap";
+@import "font-awesome-4.2.0/font-awesome";
+@import "theme/bootstrap-datepicker3";
+@import "bootstrap-multiselect";
+@import "theme/form";
+@import "theme/search-form";
+@import "theme/navs";
+@import "theme/navbar";
+@import "theme/panels";
+@import "theme/buttons";
+@import "theme/thumbnails";
+@import "theme/page_header";
+@import "theme/flexslider";
+@import "theme/custom_flexslider";
+@import "theme/footer";
+@import "theme/home";
+
+@import "theme/property";
+@import "theme/sale_property";
+
+@import "theme/posts";
+@import "theme/pdf";
+
+/* FIX FOR GMAP BUG
+-------------------------------------------------- */
+.map-canvas {
+  height: 300px;
+  img {
+    max-width: none;
+    vertical-align: middle;
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+  }
+}
+
+#footer .map-canvas {
+  height: 140px;
+  width: 200px;
+  float: right;
+  margin-top: 12px;
+}
+
+/* GLOBAL
+-------------------------------------------------- */
+
+p {
+  font-size: 12px;
+}
+.copy-text {
+  font-size: 12px;
+  table {
+    width: 100%;
+    font-size: inherit;
+  }
+}
+@media(min-width: $screen-sm-min) {
+  .main-container {
+    width: 816px;
+  }
+}
+@media(min-width: $screen-md-min) {
+  .main-container {
+    max-width: 816px;
+  }
+}
+.no-border {
+  border: none !important;
+}
+.no-margin {
+  margin: 0 !important;
+}
+.bg-green {
+  background-color: $brand-success;
+}
+.bg-pink {
+  background-color: $pink;
+}
+.bg-blue {
+  background-color: $brand-primary;
+}
+.text-green {
+  color: $brand-success;
+}
+.text-pink {
+  color: $pink;
+}
+.hr-border-primary {
+  border-color: $brand-primary;
+}
+.hr-border-green {
+  border-color: $brand-success;
+}
+.hr-border-pink {
+  border-color: $pink;
+}
+
+.background-image-holder {
+  width: 100%;
+  height: 160px;
+  background-size: cover !important;
+  background-position: 50% 50% !important;
+  //background-image: image-url("bg-header.jpg");
+}
+.background-image-holder.parallax-background {
+  height: 120%;
+  top: -10%;
+}
+.hover-background .background-image-holder,
+.hover-background .foreground-image-holder {
+  @include transition(all 0.3s ease-out);
+}
+.hover-background .background-image-holder {
+  height: 110%;
+  width: 110%;
+}
+
+.tooltip.top .tooltip-arrow {
+    bottom: 0;
+    left: 20%;
+    margin: auto !important;
+    border-top: 10px solid transparent;
+    border-left: 10px solid transparent;
+}
+
+.rental-property-thumbnail {
+  .tooltip-inner {
+    background-color: $brand-primary !important;
+  }
+  .tooltip.top .tooltip-arrow {
+    border-top-color: $brand-primary !important;
+  }
+}
+.annual-rental-thumbnail {
+  .tooltip-inner {
+    background-color: $pink !important;
+  }
+  .tooltip.top .tooltip-arrow {
+    border-top-color: $pink !important;
+  }
+}
+.sale-property-thumbnail {
+  .tooltip-inner {
+    background-color: $brand-success !important;
+  }
+  .tooltip.top .tooltip-arrow {
+    border-top-color: $brand-success !important;
+  }
+}
+
+
+@media print {
+  img {
+    @extend .visible-print-block;
+  }
+}

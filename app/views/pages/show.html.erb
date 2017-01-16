@@ -1,0 +1,32 @@
+<%# resource_cache(resource) do %>
+<% content_for :page_header do -%>
+<div class="page-header">   
+  <div class="background-image-holder">
+    <%= image_tag("stbarthview.jpg", :class => "img-responsive") %>
+  </div>
+</div>
+<% end %>
+
+<article class="page">
+  
+  <% if resource.images.any? %>
+  <div class='row row-padded'>
+    <div class='col-sm-12'>
+      <!-- Slider
+      ================================================== -->
+      <%= render "page_slider", :images => resource.images %>
+    </div>
+  </div>
+  <% end %>
+
+  <!-- Header
+  ================================================== -->
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h1><%= resource.title %></h1>
+        <%= render_copy_text(resource.body) %>
+    </div>
+  </div>
+  
+</article>
+<%# end %>

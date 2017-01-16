@@ -1,0 +1,27 @@
+.nav-tabs > li, .nav-pills > li {
+    float:none;
+    display:inline-block;
+    *display:inline; /* ie7 fix */
+     zoom:1; /* hasLayout ie7 trigger */
+ }
+
+ .nav-tabs, .nav-pills {
+    text-align:center;
+}
+
+.nav-tabs > li > a {
+    color: $text-color;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 0;
+}
+.nav > li > a:hover, .nav > li > a:focus {
+    background-color: darken(#ebeae6, 5%);
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    color: $text-color;
+    background-color: darken(#ebeae6, 5%);
+    border: 1px solid darken(#ebeae6, 5%);
+    border-bottom-color: transparent;
+}

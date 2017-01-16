@@ -1,0 +1,58 @@
+<%
+price_options = []
+price_options << t(:'realty.filters.price.less_than', :price => "400 000")
+price_options << "400 000 - 1 000 000"
+price_options << t(:'realty.filters.price.more_than', :price => "1 000 000")
+price_options.compact.join("\n").html_safe
+@sale_section ||= site.sale_property_lists.live.first
+if @sale_section
+%>
+<%= simple_form_for(:search,
+  :url => @sale_section.public_url,
+  :method => :get,
+  :html => {:class => "form-search"}) do |form| %>
+    <div class="row">
+      <div class="col-md-3">
+        <div class='form-group'>
+        <%= form.select :with_category,
+        options_from_collection_for_select(@sale_section.categories, :id, :title, params[:search].present? ? params[:search][:with_category] : ''),
+        { :prompt => t(:'helpers.select.category.prompt').html_safe },
+        { :class => "form-control" } %>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <%= render "shared/bedroom_count_select", :f => form %>
+      </div>
+      <div class="col-md-3">
+        <%= render "shared/area_select", :f => form %>
+      </div>
+      <div class="col-md-3">
+        <div class='form-group'>
+          <%= form.input :order,
+           :collection => [[:title, :by_title], [:price, :by_price]],
+           :selected => params[:search].present? ? params[:search][:order] : nil,
+           :prompt => t(:'helpers.select.order.prompt').html_safe,
+           :label => false,
+           :as => :select,
+           :input_html => { :class => "form-control" } %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-9">
+        <div class='form-group no-margin'>
+          <%= form.input :price,
+          :collection => price_options,
+          :selected => params[:search].present? ? params[:search][:price] : nil,
+          :prompt => t(:'helpers.select.price.prompt').html_safe,
+          :label => false,
+          :as => :select,
+          :input_html => { :class => "form-control" } %>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <%= form.button 'submit', t('search'), :class => "submit-search btn btn-green-dark" %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

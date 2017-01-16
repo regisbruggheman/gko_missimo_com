@@ -1,0 +1,98 @@
+<%
+price_options = []
+price_options << t(:'realty.filters.price.less_than', :price => 4000)
+price_options << "4000 - 10000"
+price_options << t(:'realty.filters.price.more_than', :price => 10000)
+price_options.compact.join("\n").html_safe
+
+@rental_properties_section ||= site.rental_property_lists.live.first
+@rental_properties ||= @rental_properties_section.rental_properties.published.in_city(site.cities.first).with_translations(I18n.locale).order('content_translations.title ASC')
+@parent_categories ||= @rental_properties_section.categories.with_translations(I18n.locale).order('category_translations.title ASC')
+@parent_stickers ||= @rental_properties_section.stickers.with_translations(I18n.locale).order('sticker_translations.name ASC')
+if @rental_properties_section
+%>
+  <%= simple_form_for(:search,
+    :url => @rental_properties_section.public_url,
+    :method => :get,
+    :html => { :class => "form-search" }) do |form| %>
+  <%= form.input :page,
+  :as => :hidden,
+  :input_html => { :value => "1" } %>
+    <div class="row first-row">
+      <div class="col-md-3">
+        <div class='form-group'>
+          <%= form.input :with_category,
+          :collection => @parent_categories,
+          :selected => params[:search].present? ? params[:search][:with_category] : nil,
+          :label_method => :title,
+          :value_method => :id,
+          :prompt => "Type",
+          :label => false,
+          :as => :select,
+          :input_html => { :class => "form-control" } %>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class='form-group'>
+          <%= render "shared/bedroom_count_select", :f => form %>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <%= render "city_select", :f => form %>
+      </div>
+      <div class="col-md-3">
+        <div class='form-group'>
+          <%= form.input :with_sticker,
+          :collection => @parent_stickers,
+          :selected => params[:search].present? ? params[:search][:with_sticker] : nil,
+          :label_method => :name,
+          :value_method => :id,
+          #:prompt => "Options",
+          :label => false,
+          :as => :select,
+          :input_html => { :multiple => true, :class => "js-multiple-select form-control" } %>
+        </div>
+      </div>
+    </div>
+    <div class="row last-row">
+      <div class="col-md-3">
+        <div class='form-group no-margin'>
+          <%= form.input :with_title,
+          :collection => RentalProperty.published.all,
+          :selected => params[:search].present? ? params[:search][:title] : nil,
+          :label_method => :title,
+          :value_method => :title,
+          :prompt => t(:'helpers.select.by_name.prompt').html_safe,
+          :label => false,
+          :as => :select,
+          :input_html => { :class => "form-control" } %>
+        </div>
+      </div>
+      <div class="col-md-3">
+      <div class='form-group no-margin'>
+      <%= form.input :price,
+        :collection => price_options,
+        :prompt => t(:'helpers.select.price.prompt').html_safe,
+        :label => false,
+        :as => :select,
+        :selected => params[:search].present? ? params[:search][:price] : nil,
+        :input_html => { :class => "form-control" } %>
+    </div>
+    </div>
+      <div class="col-md-3">
+        <div class='form-group no-margin'>
+          <%= form.input :order,
+          :collection => [[t(:name), :by_title], [t(:price), :by_price]],
+          :selected => params[:search].present? ? params[:search][:order] : nil,
+          :prompt => t(:'helpers.select.order.prompt').html_safe,
+          :label => false,
+          :as => :select,
+          :input_html => { :class => "form-control" } %>
+        </div>
+     </div>
+      <div class="col-md-3">
+       <%= form.button 'submit', t('search'), :class => "submit-search btn btn-blue-dark" %>
+     </div>
+    </div>
+  <% end %>
+<% end %>

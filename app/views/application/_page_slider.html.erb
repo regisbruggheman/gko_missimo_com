@@ -1,0 +1,37 @@
+<%
+    rand_id = "slider_#{rand(10000)}"
+%>
+<div class="flexslider" id="slider">
+  <ul class="slides">
+    <% images.each do |img| %>
+      <%
+        geom = case request.env['mobvious.device_type']
+          when :mobile
+            "x206"
+          else
+            "x520"
+          end
+      %>
+      <li data-thumb = "<%= img.thumbnail(geom).url %>">
+        <%= image_fu(img, geom, :class => "img-responsive") %>
+      </li>
+    <% end %>
+  </ul>
+</div><!--end of image slider-->
+<% if images.length > 1 %>
+<div class="flexslider" id="carousel">
+  <ul class="slides">
+    <% images.each do |img| %>
+      <%
+        geom = case request.env['mobvious.device_type']
+          when :mobile
+            "x80"
+          else
+            "x125"
+          end
+      %>
+      <li><%= image_fu(img, geom, :class => "img-responsive") %></li>
+    <% end %>
+  </ul>
+</div><!--end of image slider-->
+<% end %>

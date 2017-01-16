@@ -1,0 +1,40 @@
+<%= simple_form_for(:annual_rental_inquiry, 
+  :url => annual_rental_inquiries_path, :method => :post) do |form| %>
+  <%= hidden_field_tag(:return_to, request.url) %>
+  <%= form.hidden_field :site_id, :value => site.id %>
+  <%= render 'flash' %>
+  <%= form.error_notification %>
+  <div class='row'> 
+    <div class='col-sm-12'>
+      <div class="form-group">
+  		  <%= form.input :name, :hint => false, :input_html => { :class => "form-control" }  %>
+      </div>
+      <div class="form-group">
+  		  <%= form.input :email, :hint => false, :input_html => { :class => "form-control" } %>
+      </div>
+      <div class="form-group">
+  		  <%= form.input :phone, :hint => false, :required => true, :input_html => { :class => "form-control" } %>
+      </div>
+      <div class="form-group">
+  		  <%= form.input :bedroom_count,  :hint => false, :required => true, :input_html => { :class => "form-control" } %>
+      </div>
+      <div class="form-group">
+  		  <%= form.input :max_price, :hint => false, :required => true, :input_html => { :class => "form-control" } %>
+      </div>
+      <div class="form-group">
+  		  <%= form.input :area, :hint => false, :required => false, :input_html => { :class => "form-control" } %>
+      </div>
+      <div class="form-group">
+  	    <%= form.input :message, 
+  		    :as => :text, 
+  		    :hint => false, 
+  		    :input_html => { :rows => 8, :class => "form-control" } %>
+      </div>
+      <%= render 'anti_spam_field', :f => form %>
+      <div class='form-group'>
+        <%= form.button :submit, t("send_inquiry"), :class => "btn btn-pink btn-submit" %>
+      </div>
+      <p id="thanks" data-alert="" class="alert alert-success"><%= t("gko.inquiry_thanks") %></p>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,94 @@
+<% with_format('html') do %>
+<%
+options = @rental_property.content_options
+has_options = options.try(:any?)
+tags = []
+tags << realty_meta_tag("bedroom_count", @rental_property.bedroom_count)
+tags << realty_meta_tag("bathroom_count", @rental_property.bathroom_count)
+tags << realty_meta_tag("min_price", rental_min_price_value(@rental_property))
+if @rental_property.area.present?
+  tags << realty_meta_tag("area", @rental_property.area.name)
+end
+if @rental_property.children_policy.present?
+  tags << realty_meta_tag("children_policy", @rental_property.children_policy)
+end
+if @rental_property.pets_policy.present?
+  tags << realty_meta_tag("pets_policy", @rental_property.pets_policy)
+end
+@rental_property.content_options.each do |o|
+  tags << "<strong>#{o.option_type.presentation}: </strong>#{o.option_value.presentation}"
+end
+
+flags = []
+if @rental_property.area.present?
+  flags << @rental_property.area.name
+  flags << @rental_property.area.city.name
+end
+if @rental_property.meta and @rental_property.meta.code.present?
+  flags << @rental_property.meta.code
+end
+%>
+
+<article class="property rental-property">
+  <!-- Header
+  ================================================== -->
+  <div class="row">
+    <div class='pull-left'>
+      <h1><%= @rental_property.title %></h1>
+      <%= flags.compact.join(" - ").html_safe %>
+    </div>
+    <div class='pull-right'>
+        <p class="property-min-price"><%= t(:'realty.price_from') %><%= rental_min_price_value(@rental_property) %> / week</p>
+    </div>
+  </div>
+  <div class="row row-padded">
+    <%= image_tag "file://#{resource.images.first.image.path}" %>
+  </div>
+  <div class="row row-padded">
+     <h3 class="h4 text-uppercase"><%= t(:'realty.specificities') %></h3>
+
+        <!-- Detail
+        ================================================== -->
+
+        <div class='col-xs-8'>
+          <ul class="unstyled nav stickers-nav">
+            <%= tags.compact.join("<br/>").html_safe %>
+         </ul>
+        </div>
+
+        <div class='col-xs-4'>
+          <ul class="unstyled nav stickers-nav">
+            <% @rental_property.stickers.translated.each do |s| %>
+              <li class="property-sticker"><%= wicked_pdf_image_tag("icon_#{s.css}.png") %><%= s.name %></li>
+            <% end %>
+          </ul>
+        </div>
+
+     </div>
+
+      <hr class="clearfix hr-border-primary">
+
+      <!-- Description
+      ================================================== -->
+      <div class='row row-padded'>
+        <div class='col-xs-12'>
+          <%= render_copy_text(resource.body) %>
+        </div>
+      </div>
+
+      <hr class="hr-border-primary">
+
+      <!-- Rates
+      ================================================== -->
+      <div class='row row-padded'>
+        <div class='col-sm-12'>
+          <h3 class="h4 text-uppercase"><%= t(:'rates') %></h3>
+          <%= render 'rental_properties/seasons' %>
+        </div>
+      </div>
+
+      <%= content_tag(:div, "", :class => "map-canvas", :data => { :point => @rental_property.lat_long }) if @rental_property.lat_long.present? %>
+</article>
+<%# end %>
+
+ <% end %>

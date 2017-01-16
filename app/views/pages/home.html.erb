@@ -1,0 +1,205 @@
+<%
+@rent_section ||= site.rental_property_lists.live.first
+@sale_section ||= site.sale_property_lists.live.first
+@sannual_section ||= site.annual_rental_lists.live.first
+@posts ||= site.posts.limit(5)
+geom = case request.env['mobvious.device_type']
+  when :mobile
+    "480x300#"
+  when :tablet
+    "1024x560#"
+  else
+    "1400x500#"
+  end
+%>
+<% content_for :page_header do -%>
+
+<!-- Hero
+  ================================================== -->
+<section class="page-header">
+
+  <section class="flexslider" id="hero-slider">
+    <ul class="slides">
+      <% site.features.live.each do |feature| %>
+      <li class="overlayx">
+        <% if image = feature.thumbnail(geom) %>
+        <div class="background-image-holder parallax-background ">
+          <%= image_tag(image.url, :class => "background-image img-responsive") %>
+        </div>
+        <% end %>
+        <% if feature.title.present? || feature.body.present? %>
+        <div class="flex-caption">
+          <div class="flex-caption-content">
+            <%= content_tag(:h1, feature.title, :class => "flex-caption-title") if feature.title.present? %>
+            <%= feature.body.html_safe if feature.body.present? %>
+          </div>
+          <% if feature.owner and url = feature.owner.public_url %>
+            <div class="slide-link">
+              <%= link_to(url) do %>
+                <%= t("features.view_more") %> <i class="fa fa-chevron-right"></i>
+              <% end %>
+            </div>
+          <% end %>
+
+        </div><!--end of container-->
+        <% end %>
+      </li>
+      <% end %>
+    </ul>
+
+  </section>
+
+  <div class="container main-container">
+    <div class="row">
+      <div class="col-xs-6">
+        <%= render "search_button" %>
+      </div>
+      <div class="col-xs-6">
+        <%= content_tag(:a, :class => "btn btn-pink btn-news-collapse",
+            :data => { :toggle => "collapse", :target => "#global-news-panel" } ) do %>
+          <%= image_fu(@posts.first.thumbnail, "90x60#", :class => "img-responsive") if @posts.first.thumbnail %>
+          <span><%= @posts.first.title %></span>
+          <i class="fa fa-chevron-down"></i>
+        <% end if @posts.first %>
+      </div>
+    </div>
+  </div>
+
+</section>
+<% end %>
+
+
+<div id="global-news-panel" class="collapse">
+  <div id="global-news-slider">
+    <ul class="slides">
+      <% @posts.each do |post| %>
+      <li>
+        <div class="row posts">
+          <div class="col-xs-4">
+            <%= image_fu(post.thumbnail, "600x400#", :class => "img-responsive") if post.thumbnail %>
+          </div>
+          <div class="col-xs-8">
+            <h3><%= post.title %></h3>
+            <%= render_copy_text(post.body) %>
+          </div>
+        </div>
+      </li>
+      <% end if @posts.any? %>
+    </ul>
+  </div>
+</div>
+  <!-- Search
+    ================================================== -->
+<div class="row">
+  <div class="col-xs-12">
+    <div class="collapse form-search-wrapper" id="global-search-panel">
+      <div role="tabpanel">
+        <ul class="nav nav-pills" role="tablist">
+          <li role="presentation" class="bg-primary active">
+            <a href="#rental-properties-panel" aria-controls="rental-properties-panel" role="tab" data-toggle="tab">
+              <%= t(:want_to_rent) %>
+            </a>
+          </li>
+          <li role="presentation" class="bg-success">
+            <a href="#sale-properties-panel" aria-controls="sale-properties-panel" role="tab" data-toggle="tab">
+               <%= t(:want_to_buy) %>
+            </a>
+          </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane fade in active" id="rental-properties-panel">
+            <%= render "rental_properties/filter_form" %>
+          </div>
+          <div role="tabpanel" class="tab-pane fade" id="sale-properties-panel">
+            <%= render "sale_properties/filter_form" %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Presentation
+  ================================================== -->
+<section class="section-presentation">
+   <div class="row">
+     <div class="col-xs-12">
+       <p><%= t("home_agency").html_safe %></p>
+    </div>
+  </div>
+</section>
+
+<!-- StBarth
+================================================== -->
+<section class="section-stbarth">
+ <div class="row">
+   <div class="col-xs-12">
+     <div class="firt-row-inner background-image-holder">
+       <%= image_tag("stbarthview.jpg") %>
+       <p class="text-center text-uppercase section-title"><%= t("home_sb_title") %></p>
+     </div>
+     <div class="col-md-6 second-row-inner">
+       <h2 class="text-uppercase">Perles des Caraibes</h2>
+       <p><%= t("home_sb").html_safe %></p>
+       <%= link_to(@sbhpage.public_url, :class => "btn btn-primary") do %>
+          <%= t("home_sb_btn") %> <i class="fa fa-chevron-right"></i>
+        <% end if @sbhpage = site.sections.named("stbarth") %>
+     </div>
+     <div class="col-md-6 embed-video-container">
+       <div class="embed-responsive embed-responsive-16by9">
+         <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/X0adEFCKshA" allowfullscreen></iframe>
+       </div>
+     </div>
+  </div>
+</div>
+</section>
+
+<!-- new properties
+ ================================================== -->
+<section class="section-offers">
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h4 class="text-uppercase section-title">Our offers</h4>
+    </div>
+  </div>
+
+  <div class="row equal-height">
+    <div class="col-sm-6 col-left">
+
+      <%= link_to(@sannual_section.public_url, :class => "thumbnail pink" ) do %>
+        <div class="img-wrapper background-image-holder">
+          <%= image_tag("lifetyle_01.jpg") %>
+        </div>
+        <div class="caption">
+          <h3 class="title"><span>Long term rentals</span></h3>
+        </div>
+      <% end if @sannual_section %>
+
+      <%= link_to(@rent_section.public_url, :class => "thumbnail blue" ) do %>
+        <div class="img-wrapper background-image-holder">
+          <%= image_tag("lifetyle_02.jpg") %>
+        </div>
+        <div class="caption">
+          <h3 class="title"><span>Vacation villas</span></h3>
+        </div>
+      <% end if @rent_section %>
+
+    </div>
+
+    <div class="col-sm-6 col-right">
+
+      <%= link_to(@sale_section.public_url, :class => "thumbnail green" ) do %>
+        <div class="img-wrapper background-image-holder">
+          <%= image_tag("lifetyle_03.jpg") %>
+        </div>
+        <div class="caption">
+          <h3 class="title"><span>Real estate</span></h3>
+        </div>
+      <% end if @sale_section %>
+
+    </div>
+ </div>
+</section>

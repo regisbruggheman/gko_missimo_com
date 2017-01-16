@@ -1,0 +1,111 @@
+/* FORM
+-------------------------------------------------- */
+.form-search-wrapper {
+  padding: $line-height-computed / 2;
+}
+
+.form-search {
+
+  .form-control {
+    background-color: #fff;
+    color: $text-color;
+    border: 1px solid #fff;
+  }
+
+  input, select, textarea {
+    width: 100%;
+  }
+
+
+  .multiselect-container > li > a > label > input[type=checkbox] {
+     width: auto !important;
+  }
+
+  .multiselect-container > li > a > label {
+        padding: 3px 20px 3px 40px;
+  }
+
+  .select .btn-group {
+    min-width: 100%;
+    width: 100%;
+    max-width: 100%;
+    > .btn {
+      border-radius: 5px;
+      border: 1px solid #fff;
+      text-transform: none;
+    }
+    button {
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+    }
+    .multiselect-container {
+      width: 100%;
+      overflow: hidden;
+    }
+  }
+}
+
+.tab-pane-sales {
+  background-color: #40c7f4;
+}
+
+.tab-pane-rentals {
+  background-color: #98bf3f;
+}
+
+#global-search-panel {
+  background-color: $brand-primary;
+  top: -1px;
+  &.bg-success {
+    background-color: $brand-success;
+  }
+  .nav-pills {
+    text-align: left;
+    padding: 0 0 12px 0;
+
+    > li {
+      > a {
+        color: $gray-lighter;
+        background-color: #9a9b9d;
+      }
+      &.active {
+        > a {
+          color: white;
+          background-color: $brand-primary;
+          &:hover,
+          &:focus {
+            color: white;
+            background-color: #41c7f4;
+          }
+        }
+      }
+      &.bg-success.active {
+        > a {
+          color: white;
+          background-color: $green-dark;
+          &:hover,
+          &:focus {
+            color: white;
+            background-color: $green-dark;
+          }
+        }
+      }
+      &.bg-primary.active {
+        > a {
+          color: white;
+          background-color: $blue-dark;
+          &:hover,
+          &:focus {
+            color: white;
+            background-color: $blue-dark;
+          }
+        }
+      }
+    }
+
+  }
+}
+#global-search-panel.bg-primary {
+  background-color: $brand-primary;
+}

@@ -1,0 +1,118 @@
+.section-presentation {
+  margin-top: $line-height-computed;
+  margin-bottom: $line-height-computed;
+  background-color: #9a9b9d;
+  padding: $line-height-computed*2;
+  color: #fff;
+  p {
+    font-weight: 300;
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+}
+
+.section-title {
+  font-weight: 700;
+  color: $text-color;
+  margin-bottom: $line-height-computed*2;
+  padding-left: $line-height-computed;
+}
+
+.section-stbarth {
+  padding: $line-height-computed;
+  background-color: #fff;
+  .firt-row-inner {
+    display: table;
+    > p {
+      vertical-align: middle;
+      display: table-cell;
+      padding: $line-height-computed;
+      margin-bottom: 0;
+      text-transform: uppercase;
+      color: #fff !important;
+      font-size: 18px;
+    }
+  }
+  .second-row-inner {
+    padding-left: $line-height-computed;
+    padding-right: $line-height-computed;
+  }
+
+  .embed-video-container {
+    padding-top: $line-height-computed;
+    padding-bottom: $line-height-computed;
+  }
+}
+
+.section-offers {
+  padding: $line-height-computed;
+  background-color: #fff;
+
+  .thumbnail {
+    position: relative;
+    padding: 0;
+    border: none;
+    .caption {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      z-index: 3;
+      background-color: transparent !important;
+      padding: 0;
+      overflow: hidden;
+      padding: 24px;
+      @include opacity(1);
+      &:before {
+        content: '';
+        display: block;
+        left: 0;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+        @include opacity(0.7);
+        @include transition(all 0.3s ease);
+      }
+      .title {
+        display: table;
+        height: 100%;
+        position: relative;
+        width: 100%;
+        z-index: 10;
+        padding: 0;
+        margin: 0;
+        color: #fff;
+        span {
+          color: #fff;
+          text-transform: uppercase;
+          font-size: 24px;
+          letter-spacing: 1px;
+          line-height: 32px;
+          box-sizing: border-box;
+          vertical-align: middle;
+          display: table-cell;
+        }
+      }
+    }
+
+    &:hover {
+       .caption {
+         &:before {
+           @include opacity(0.9);
+         }
+       }
+    }
+  }
+
+  .thumbnail.green .caption::before {
+    background-color: rgba(152, 191, 64, 1) !important;
+  }
+  .thumbnail.pink .caption::before {
+    background-color: rgba(237, 70, 162, 1) !important;
+  }
+  .thumbnail.blue .caption::before {
+    background-color: rgba(64, 199, 244, 1) !important;
+  }
+}

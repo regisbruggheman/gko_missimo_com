@@ -1,0 +1,47 @@
+footer {
+  background-color: $navbar-default-bg;
+  padding: ($line-height-computed*3) 0;
+  color: $gray-light;
+  margin-top: $line-height-computed;
+  h5 {
+    font-family: 'Roboto';
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 900;
+    margin-bottom: 14px;
+    color: #efefef;
+  }
+  hr {
+    border-top: 3px solid #fff;
+    width: 48px;
+    margin-left: 0;
+  }
+  a {
+    color: #FFF;
+    @include transition(all 0.3s ease);
+    &:hover {
+      color: #999;
+      text-decoration: none;
+    }
+  }
+
+  .nav > li > a {
+    padding: 0;
+    color: $gray-lighter;
+    text-transform: uppercase;
+    @include transition(all 0.3s ease);
+    font-size: 12px;
+    &:hover, &:focus {
+      background-color: transparent;
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+}
+
+.copyright {
+  margin-top: $line-height-computed;
+  font-size: 10px;
+}
+

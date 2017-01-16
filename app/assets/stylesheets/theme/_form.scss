@@ -1,0 +1,47 @@
+/* FORM
+-------------------------------------------------- */
+abbr {
+  color: $brand-primary;
+}
+span.error,span.valid{
+  position: absolute;
+  top:0; 
+  right: 1em;
+}
+span.error, span.valid{ 
+  width: $line-height-computed * 2;
+  height: $line-height-computed * 2; 
+  background-position:center center;
+  background-size: $line-height-computed; 
+  background-repeat: no-repeat;
+}
+span.error{
+  background-image:image_url("error.svg");
+}
+span.valid{
+  background-image:image_url("valid.svg");
+}
+
+.alert {
+  display:none;
+  border: 0; 
+  border-radius: 0; 
+  background-color:#ff3333; 
+  color: #fff;
+}
+.alert-success{
+  background-color:#22b573; 
+  color: #fff;
+}
+/* SEARCH FORM
+-------------------------------------------------- */
+.form-newsletter {
+  margin-bottom: $line-height-computed;
+  .form-control {
+    max-width: 100%;
+  }
+}
+
+.sale_property_inquiry abbr {
+  color: $brand-success;
+}

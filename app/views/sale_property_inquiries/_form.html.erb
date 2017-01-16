@@ -1,0 +1,37 @@
+<%= simple_form_for(:sale_property_inquiry, 
+  :url => sale_property_inquiries_path, 
+  :method => :post, 
+  :remote => true, 
+  :html => {:class => "sale_property_inquiry"}) do |f| %>
+  <%= hidden_field_tag(:return_to, request.url) %>
+  <%= f.hidden_field :site_id, :value => site.id %>
+  <%= f.hidden_field :property_id %>
+  <%= render 'flash' %>
+  <%= f.error_notification %>
+
+    <div class="form-group">
+        <%= f.input :name, 
+		:hint => false, :input_html => { :class => "form-control" }  %>
+    </div>
+      <div class="form-group">
+        <%= f.input :email, 
+		:hint => false, :input_html => { :class => "form-control" } %>
+    </div>
+    <div class="form-group">
+        <%= f.input :phone, 
+		:hint => false, 
+		:required => false, :input_html => { :class => "form-control" } %>
+    </div>
+
+	  <div class="form-group">
+      <%= f.input :message, 
+		:as => :text, 
+		:hint => false, 
+		:input_html => { :rows => 8, :class => "form-control" } %>
+    </div> 
+  <%= render 'anti_spam_field', :f => f %>
+  <div class='form-group'>
+    <%= f.button :submit, t("send_inquiry"), :class => "btn btn-success btn-submit" %>
+  </div>
+  <p id="thanks" data-alert="" class="alert alert-success"><%= t("gko.inquiry_thanks") %></p>
+<% end %>  

@@ -1,0 +1,19 @@
+<% content_for :page_header do -%>
+<div class="page-header">
+  <div class="background-image-holder">
+    <%= image_tag("stbarthview.jpg", :class => "img-responsive") %>
+  </div>
+  <div class="container main-container">
+    <div class="row">
+      <div class="col-xs-12">
+        <a class="btn btn-success btn-search-collapse" data-toggle="collapse" href="#sale-properties-form" aria-expanded="false" aria-controls="collapseExample">
+          <i class="fa fa-search"></i> <%= t('searching') %>
+        </a>
+    </div>
+    </div>
+  </div>
+</div>
+<% end %>
+<div class="collapse fade in bg-green form-search-wrapper" id="sale-properties-form">
+  <%= render "sale_properties/filter_form" %>
+</div>

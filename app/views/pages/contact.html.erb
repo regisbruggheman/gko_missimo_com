@@ -1,0 +1,55 @@
+<%= render_slideshow_for(resource) %>
+<%= content_tag(:h1, resource.title.html_safe, :class => "page-title text-pink") %>
+<div class='row'>
+	<div class="col-xs-12">
+		<%= render_html_text(resource.body) %>
+	</div>
+</div>
+<%= simple_form_for(:inquiry, :url => inquiries_path,
+      :method => :post,
+      :remote => true,
+      :html => {:class => "inquiry"}) do |f| %>
+  <%= f.hidden_field :site_id, :value => site.id %>
+  <%= render 'flash' %>
+  <%= f.error_notification %>
+<div class='row'>
+  <div class="col-sm-6">
+    <div class='form-group'>
+    <%= f.input :name, :placeholder => t("realty.placeholders.name"),
+                :label => false, :hint => false,
+                :required => true,
+                :input_html => { :class => 'form-control' } %>
+    </div>
+    <div class='form-group'>
+      <%= f.input :email, :placeholder => t("realty.placeholders.email"),
+                  :label => false, :hint => false,
+                  :required => true,
+                  :input_html => { :class => 'form-control' } %>
+    </div>
+    <div class='form-group'>
+      <%= f.input :phone, :placeholder => t("realty.placeholders.phone"),
+                  :label => false, :hint => false,
+                  :required => true,
+                  :input_html => { :class => 'form-control' } %>
+    </div>
+    <div class='form-group'>
+      <%= f.input :subject, :placeholder => t("realty.placeholders.subject"),
+                  :label => false, :hint => false,
+                  :required => true,
+                  :input_html => { :class => 'form-control' } %>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class='form-group'>
+      <%= f.input :message, :as => :text,
+                  :placeholder => "Message",
+                  :label => false, :hint => false,
+                  :required => true,
+                  :input_html => { :rows => 6, :class => 'form-control' } %>
+    </div>
+  	<%= render 'anti_spam_field', :f => f %>
+    <%= f.button :submit, t("send_inquiry"), :class => 'btn btn-pink', :disable_with => "Submitting..." %>
+  </div>
+  <p id="thanks" data-alert="" class="alert alert-success"><%= t("gko.inquiry_thanks") %></p>
+</div>
+<% end %>

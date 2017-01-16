@@ -1,0 +1,30 @@
+/* BUTTONS
+-------------------------------------------------- */
+.btn-white {
+  @include button-variant(#000, #fff, #fff);
+}
+.btn-gray {
+  @include button-variant(#fff, $gray, $gray);
+}
+
+.btn-green-dark {
+  @include button-variant(#fff, $green-dark, $green-dark);
+}
+
+.btn-blue-dark {
+  @include button-variant(#fff, $blue-dark, $blue-dark);
+}
+
+.btn-pink {
+  @include button-variant(#fff, #ed46a2, #ed46a2);
+}
+.btn-pink-dark {
+  @include button-variant(#fff, #B8367D, #B8367D);
+}
+.btn-facebook {
+  @include button-variant(#fff, #3b5998, #3b5998);
+}
+
+.btn {
+  text-transform: uppercase;
+}

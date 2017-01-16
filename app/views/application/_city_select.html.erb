@@ -1,0 +1,11 @@
+<% @city ||= params[:search].nil? || params[:search][:in_city].blank? ? site.cities.first : site.cities.find(params[:search][:in_city].to_i) %>
+
+<div class='form-group'>
+  <%= f.input :in_area, 
+      :collection =>  site.cities, 
+      :as => :grouped_select, 
+      :group_method => :areas,
+      :label => false,
+      :prompt => t(:'helpers.select.area.prompt').html_safe,
+      :input_html => { :class => "form-control" } %>
+</div>

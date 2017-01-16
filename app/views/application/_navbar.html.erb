@@ -1,0 +1,38 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <% if site.frontend_translated? %>
+      <nav id="locales-menu" class="dropdown hidden-print">
+        <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-success">
+            <%= t(:language, :locale => (I18n.locale.to_s == 'en' ? :fr : :en)) %>
+            <span class="triangle-bottom-left"></span>
+          </button>
+        <ul class="dropdown-menu" aria-labelledby="dLabel">
+          <span class="triangle-top-right"></span>
+          <% site.available_locales.each do |language| %>
+            <%# unless current_locale?(language.code) %>
+              <li><%= link_to(language.presentation, root_url(:locale => language.code), :class => [language.code.to_s, 'navbar-link']) %></li>
+            <%# end %>
+          <% end %>
+        </ul>
+      </nav>
+      <% end %>
+
+      <%= link_to(image_tag("logo.svg", :alt => site.title, :class => "img-responsive", :nopin => "nopin"), root_url, :class => "navbar-brand") %><br/>
+      <%= link_to(image_tag("logo_baseline.svg", :alt => site.title, :class => "img-responsive", :nopin => "nopin"), root_url, :class => "navbar-brand-baseline") %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse">
+        <%= render 'menu', :sections => site.primary_menu, :menu_name => 'nav navbar-nav' %>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

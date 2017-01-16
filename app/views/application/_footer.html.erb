@@ -1,0 +1,27 @@
+<%# cache([site, I18n.locale, 'footer']) do %>
+<footer id='footer' class="hidden-print">
+  <div class='container footer-container'>
+
+    <div class='row'>
+      <div class="col-sm-4">
+        <h5>Newsletter</h5>
+        <%= render 'newsletter' %>
+        <h5>Navigation</h5>
+        <%= render_menu("footer-nav") %>
+      </div>
+      <div class="col-sm-4">
+        <%= content_tag(:div, "", :class => "map-canvas", :data => { :point => "17.896444,-62.848703" }) %>
+        <script type='text/javascript' src="http://maps.google.com/maps/api/js?key=<%= site.preferred_google_map_api_key %>&sensor=false"></script>
+      </div>
+      <div class="col-sm-4">
+        <h5>Contact</h5>
+        <p><%= "<span class='text-green'>Missimmo</span><br/>Rue du Bord de Mer - Gustavia<br>97133 Saint Barthélemy French West Indies".html_safe %></p>
+        <p><%= "<i class='fa fa-phone text-green'></i>&#8239;&#8239;Tel. &#8239; &#8239;+590 590 511 854<br><i class='fa fa-fax text-green'></i>&#8239;&#8239;Fax &#8239; &#8239;+590 590 510 073<br>".html_safe %>
+          <i class='fa fa-envelope text-green'></i>&#8239;&#8239;<%= mail_to('info@missimmo.com', 'info@missimmo.com', :encode => "javascript") %></p>
+      </div>
+
+    </div>
+
+  </div>
+</footer>
+<%# end %>

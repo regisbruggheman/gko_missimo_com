@@ -1,0 +1,8 @@
+<%# collection_row_cache(sale_property) do %>
+<article class="col-sm-6 col-md-6 post-item">
+  <%= render "thumbnail", :record => sale_property %>
+</article> 
+<%#end %>
+<% if sale_property_counter%2 == 1 %>
+  <div class="clearfix hidden-xs-block"></div>
+<% end %>
