@@ -13,17 +13,19 @@
   .flex-caption {
     position: absolute;
     z-index: 100;
-    right: 30%;
+    right: 10%;
     top: 25%;
-    max-width: 25%;
-    background: rgba(255,255,255,.85);
+    max-width: 20%;
+    max-height: 50%;
+    background: rgba(255,255,255,.65);
     color: $text-color !important;
     font-size: 14px;
     line-height: 18px;
+    overflow-y: auto; 
   }
   .flex-caption-content {
     display: block;
-    padding: 6%;
+    padding: 3%;
   }
   .flex-caption-title {
     font-size: 22px;

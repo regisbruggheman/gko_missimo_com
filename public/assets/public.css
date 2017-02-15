@@ -11697,59 +11697,42 @@ span.valid {
   bottom: 1px;
   left: 15px;
   z-index: 1000;
-  font-size: 16px;
-}
-/* line 13, ../../app/assets/stylesheets/theme/_page_header.scss */
-.page-header .btn-search-collapse i {
+  font-size: 10px;
+  white-space: normal;
+  border: none;
+  height: 30px;
+  line-height: 18px;
   color: #fff !important;
-  margin-right: 14px;
-  font-size: 32px;
 }
-/* line 18, ../../app/assets/stylesheets/theme/_page_header.scss */
-.page-header .btn-search-collapse span {
-  color: white;
+/* line 17, ../../app/assets/stylesheets/theme/_page_header.scss */
+.page-header .btn-search-collapse i {
+  margin-right: 8px;
+  font-size: 18px;
 }
 /* line 22, ../../app/assets/stylesheets/theme/_page_header.scss */
-.page-header .btn-search-collapse input {
-  background-color: transparent;
-  vertical-align: middle;
-  color: white;
-}
-/* line 103, ../../app/assets/stylesheets/bootstrap/mixins/_vendor-prefixes.scss */
-.page-header .btn-search-collapse input::-moz-placeholder {
-  color: white;
-  opacity: 1;
-}
-/* line 107, ../../app/assets/stylesheets/bootstrap/mixins/_vendor-prefixes.scss */
-.page-header .btn-search-collapse input:-ms-input-placeholder {
-  color: white;
-}
-/* line 108, ../../app/assets/stylesheets/bootstrap/mixins/_vendor-prefixes.scss */
-.page-header .btn-search-collapse input::-webkit-input-placeholder {
-  color: white;
-}
-/* line 29, ../../app/assets/stylesheets/theme/_page_header.scss */
 .page-header .btn-news-collapse {
   display: block;
   position: absolute;
   bottom: 1px;
   right: 15px;
   z-index: 1000;
-  font-size: 16px;
+  font-size: 12px;
   white-space: normal;
   text-align: left;
   padding: 0;
   vertical-align: middle;
   border: none;
   text-transform: none;
-  height: 60px;
+  height: 30px;
+  line-height: 30px;
+  overflow: hidden;
 }
-/* line 43, ../../app/assets/stylesheets/theme/_page_header.scss */
+/* line 38, ../../app/assets/stylesheets/theme/_page_header.scss */
 .page-header .btn-news-collapse img {
   float: left;
   margin-right: 8px;
 }
-/* line 47, ../../app/assets/stylesheets/theme/_page_header.scss */
+/* line 42, ../../app/assets/stylesheets/theme/_page_header.scss */
 .page-header .btn-news-collapse span {
   padding: 0 8px;
   position: relative;
@@ -11758,8 +11741,9 @@ span.valid {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   float: left;
+  display: block;
 }
-/* line 56, ../../app/assets/stylesheets/theme/_page_header.scss */
+/* line 52, ../../app/assets/stylesheets/theme/_page_header.scss */
 .page-header .btn-news-collapse i {
   float: right;
   padding: 0 8px;
@@ -11771,7 +11755,7 @@ span.valid {
   display: block;
 }
 
-/* line 69, ../../app/assets/stylesheets/theme/_page_header.scss */
+/* line 65, ../../app/assets/stylesheets/theme/_page_header.scss */
 #global-news-panel {
   padding: 20px;
   background-color: #fff;
@@ -12162,20 +12146,22 @@ html[xmlns] .flexslider .slides {
 #hero-slider .flex-caption {
   position: absolute;
   z-index: 100;
-  right: 30%;
+  right: 10%;
   top: 25%;
-  max-width: 25%;
-  background: rgba(255, 255, 255, 0.85);
+  max-width: 20%;
+  max-height: 50%;
+  background: rgba(255, 255, 255, 0.65);
   color: #333333 !important;
   font-size: 14px;
   line-height: 18px;
+  overflow-y: auto;
 }
-/* line 24, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
+/* line 26, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
 #hero-slider .flex-caption-content {
   display: block;
-  padding: 6%;
+  padding: 3%;
 }
-/* line 28, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
+/* line 30, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
 #hero-slider .flex-caption-title {
   font-size: 22px;
   color: #000;
@@ -12183,7 +12169,7 @@ html[xmlns] .flexslider .slides {
   margin: 0 !important;
   color: #333333 !important;
 }
-/* line 35, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
+/* line 37, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
 #hero-slider .slide-link {
   background: #555555;
   margin: 0;
@@ -12191,19 +12177,19 @@ html[xmlns] .flexslider .slides {
   width: 50%;
   padding: 4px 8px;
 }
-/* line 41, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
+/* line 43, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
 #hero-slider .slide-link a {
   color: white;
   text-transform: uppercase;
   display: block;
 }
-/* line 45, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
+/* line 47, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
 #hero-slider .slide-link a:hover {
   color: #98bf3f;
   text-decoration: none;
 }
 
-/* line 53, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
+/* line 55, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
 .flexslider .flex-direction-nav a.flex-prev,
 .flexslider .flex-direction-nav a.flex-next {
   -webkit-transition: none;
@@ -12213,7 +12199,7 @@ html[xmlns] .flexslider .slides {
   filter: alpha(opacity=100);
 }
 
-/* line 57, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
+/* line 59, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
 .flex-direction-nav {
   max-width: 1020px;
   margin-right: auto !important;
@@ -12222,73 +12208,73 @@ html[xmlns] .flexslider .slides {
   padding-right: 15px !important;
 }
 
-/* line 68, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
+/* line 70, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
 .flex-direction-nav a {
   background-color: #333333;
   text-align: center;
   opacity: 1;
   filter: alpha(opacity=100);
 }
-/* line 72, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
+/* line 74, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
 .flex-direction-nav a:before {
   font-size: 20px;
   color: #98bf3f;
   text-shadow: none;
 }
 
-/* line 78, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
+/* line 80, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
 .flex-direction-nav .flex-prev {
   left: 0;
 }
 
-/* line 81, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
+/* line 83, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
 .flex-direction-nav .flex-next {
   right: 0;
   text-align: center;
 }
 
-/* line 85, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
+/* line 87, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
 .flexslider:hover .flex-direction-nav .flex-prev {
   opacity: 1;
   filter: alpha(opacity=100);
   left: 0;
 }
 
-/* line 89, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
+/* line 91, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
 .flexslider:hover .flex-direction-nav .flex-prev:hover {
   opacity: 1;
   filter: alpha(opacity=100);
   background-color: #98bf3f;
 }
-/* line 92, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
+/* line 94, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
 .flexslider:hover .flex-direction-nav .flex-prev:hover:before {
   color: #333333;
 }
 
-/* line 96, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
+/* line 98, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
 .flexslider:hover .flex-direction-nav .flex-next {
   opacity: 1;
   filter: alpha(opacity=100);
   right: 0;
 }
 
-/* line 100, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
+/* line 102, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
 .flexslider:hover .flex-direction-nav .flex-next:hover {
   opacity: 1;
   filter: alpha(opacity=100);
   background-color: #98bf3f;
 }
-/* line 103, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
+/* line 105, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
 .flexslider:hover .flex-direction-nav .flex-next:hover:before {
   color: #333333;
 }
 
-/* line 108, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
+/* line 110, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
 #global-news-slider {
   position: relative;
   padding: 20px 20px 60px 20px;
 }
-/* line 111, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
+/* line 113, ../../app/assets/stylesheets/theme/_custom_flexslider.scss */
 #global-news-slider .flex-control-nav {
   bottom: 0;
   width: auto;

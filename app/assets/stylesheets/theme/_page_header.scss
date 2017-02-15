@@ -8,22 +8,15 @@
     bottom: 1px;
     left: 15px;
     z-index: 1000;
-    font-size: 16px;
-
+    font-size: 10px;
+    white-space: normal;
+    border: none;
+    height: 30px;
+    line-height: 18px;
+    color: #fff !important;
     i {
-      color: #fff !important;
-      margin-right: 14px;
-      font-size: 32px;
-    }
-    span {
-      //font-size: 22px;
-      color: white;
-    }
-    input {
-      background-color: transparent;
-      vertical-align: middle;
-      color: white;
-      @include placeholder(white);
+      margin-right: 8px;
+      font-size: 18px;
     }
   }
   .btn-news-collapse {
@@ -32,14 +25,16 @@
     bottom: 1px;
     right: 15px;
     z-index: 1000;
-    font-size: 16px;
+    font-size: 12px;
     white-space: normal;
     text-align: left;
     padding: 0;
     vertical-align: middle;
     border: none;
     text-transform: none;
-    height: 60px;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
     img {
       float: left;
       margin-right: 8px;
@@ -52,6 +47,7 @@
       -ms-transform: translateY(-50%);
       transform: translateY(-50%);
       float: left;
+      display: block;
     }
     i {
       float: right;
