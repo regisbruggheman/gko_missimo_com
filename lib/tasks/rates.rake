@@ -55,6 +55,6 @@ namespace :rates do
     end
 
     #puts "message: #{message}"
-    InquiryMailer.task_report(message).deliver
+    InquiryMailer.task_report("Missimo " + message).deliver
   end
 end
