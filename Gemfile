@@ -47,5 +47,5 @@ gem "nokogiri", "~> 1.5.1"
 gem 'bootstrap-datepicker-rails', '= 1.3.1.1'
 gem 'bootstrap-multiselect-rails'
 gem 'wicked_pdf', '~> 0.9.10'
-gem 'wkhtmltopdf-binary', '~> 0.12.3.1'
+gem 'wkhtmltopdf-binary', '~> 0.9.9.3'
 gem 'bcrypt', '= 3.1.10'
