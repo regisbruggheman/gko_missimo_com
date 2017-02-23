@@ -63,7 +63,7 @@ GIT
 
 GIT
   remote: git@github.com:regisbruggheman/gko_realty.git
-  revision: 1d088cc6a3869eda3cc1e9fc308aa3f7a79436e9
+  revision: 488c5f1eebf9f8fdf431fab6f89afc1764b6b689
   specs:
     gko_realty (0.4.92)
 
