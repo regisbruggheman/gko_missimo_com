@@ -34,17 +34,14 @@ end
   <div class="row">
     <div class='pull-left'>
       <h1><%= @sale_property.title %></h1>
-      <%= flags.compact.join(" - ").html_safe %>
+      <%#= flags.compact.join(" - ").html_safe %>
     </div>
     <div class='pull-right'>
-        <p class="property-min-price"><%= sale_price_value(@sale_property, true) %></p>
-        <% if @sale_property.meta.statute %>
-        <p class="property-status bg-success"><%= raw @sale_property.meta.statute.title %></p>
-        <% end %>
+        <p class="property-min-price"><%#= sale_price_value(@sale_property, true) %></p>
     </div>
   </div>
   <div class="row row-padded">
-    <%= image_tag "file://#{resource.images.first.image.path}" %>
+    <%= image_tag image_url "#{resource.images.first.image.url}" %>
   </div>
   <div class="row row-padded">
      <h3 class="h4 text-uppercase"><%= t(:'realty.specificities') %></h3>
@@ -61,7 +58,7 @@ end
         <div class='col-xs-4'>
           <ul class="unstyled nav stickers-nav">
             <% @sale_property.stickers.translated.each do |s| %>
-              <li class="property-sticker"><%= wicked_pdf_image_tag("icon_#{s.css}.png") %><%= s.name %></li>
+              <li class="property-sticker"><%= image_tag image_url("icon_#{s.css}.png") %><%= s.name %></li>
             <% end %>
           </ul>
         </div>

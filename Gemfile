@@ -12,32 +12,32 @@ gem 'json', '= 1.8.3'
 gem 'bcrypt', '= 3.1.10'
 gem 'mysql2', '= 0.3.20'
 
-# group :production do
-#  git 'git@github.com:regisbruggheman/gko_cms3.git' do #, :tag => 'v0.8.43' do
-#    gem 'gko_core'
-#    gem 'gko_auth'
-#    gem 'gko_documents'
-#    gem 'gko_inquiries'
-#    gem 'gko_features'
-#    gem 'gko_categories'
-#    gem 'gko_stickers'
-#    gem 'gko_blog'
-#  end
-#  #gem 'gko_realty', :git => 'git@github.com:jdfdesign/gko-realty.git', :tag => "v0.4.91"
-#  gem 'gko_realty', :git => 'git@github.com:regisbruggheman/gko_realty.git'
-# end
-
-group :development do
-  gem "gko_core", :path => '~/Github/gko_cms3/gko_core'
-  gem "gko_auth", :path => '~/Github/gko_cms3/gko_auth'
-  gem "gko_documents", :path => '~/Github/gko_cms3/gko_documents'
-  gem "gko_inquiries", :path => '~/Github/gko_cms3/gko_inquiries'
-  gem "gko_features", :path => '~/Github/gko_cms3/gko_features'
-  gem "gko_categories", :path => '~/Github/gko_cms3/gko_categories'
-  gem "gko_stickers", :path => '~/Github/gko_cms3/gko_stickers'
-  gem "gko_blog", :path => '~/Github/gko_cms3/gko_blog'
-  gem "gko_realty", :path => '~/Github/gko/gko_realty'
+group :production do
+ git 'git@github.com:regisbruggheman/gko_cms3.git' do #, :tag => 'v0.8.43' do
+   gem 'gko_core'
+   gem 'gko_auth'
+   gem 'gko_documents'
+   gem 'gko_inquiries'
+   gem 'gko_features'
+   gem 'gko_categories'
+   gem 'gko_stickers'
+   gem 'gko_blog'
+ end
+ #gem 'gko_realty', :git => 'git@github.com:jdfdesign/gko-realty.git', :tag => "v0.4.91"
+ gem 'gko_realty', :git => 'git@github.com:regisbruggheman/gko_realty.git'
 end
+
+# group :development do
+#   gem "gko_core", :path => '~/Github/gko_cms3/gko_core'
+#   gem "gko_auth", :path => '~/Github/gko_cms3/gko_auth'
+#   gem "gko_documents", :path => '~/Github/gko_cms3/gko_documents'
+#   gem "gko_inquiries", :path => '~/Github/gko_cms3/gko_inquiries'
+#   gem "gko_features", :path => '~/Github/gko_cms3/gko_features'
+#   gem "gko_categories", :path => '~/Github/gko_cms3/gko_categories'
+#   gem "gko_stickers", :path => '~/Github/gko_cms3/gko_stickers'
+#   gem "gko_blog", :path => '~/Github/gko_cms3/gko_blog'
+#   gem "gko_realty", :path => '~/Github/gko/gko_realty'
+# end
 
 gem "money", "= 5.0.0"
 gem "eu_central_bank", "~> 0.3.2"

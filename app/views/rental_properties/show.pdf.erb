@@ -42,7 +42,7 @@ end
     </div>
   </div>
   <div class="row row-padded">
-    <%= image_tag "file://#{resource.images.first.image.path}" %>
+    <%= image_tag image_url "#{resource.images.first.image.url}" %>
   </div>
   <div class="row row-padded">
      <h3 class="h4 text-uppercase"><%= t(:'realty.specificities') %></h3>
@@ -59,7 +59,7 @@ end
         <div class='col-xs-4'>
           <ul class="unstyled nav stickers-nav">
             <% @rental_property.stickers.translated.each do |s| %>
-              <li class="property-sticker"><%= wicked_pdf_image_tag("icon_#{s.css}.png") %><%= s.name %></li>
+              <li class="property-sticker"><%= image_tag image_url("icon_#{s.css}.png") %><%= s.name %></li>
             <% end %>
           </ul>
         </div>

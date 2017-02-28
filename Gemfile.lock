@@ -1,28 +1,12 @@
-PATH
-  remote: ~/Github/gko/gko_realty
-  specs:
-    gko_realty (0.4.92)
-
-PATH
-  remote: ~/Github/gko_cms3/gko_auth
+GIT
+  remote: git@github.com:regisbruggheman/gko_cms3.git
+  revision: b13be508a568c7a7a4f1e1717db25142d80b28b6
   specs:
     gko_auth (0.8.43)
       cancan (~> 1.6.10)
       devise (~> 2.2.3)
-
-PATH
-  remote: ~/Github/gko_cms3/gko_blog
-  specs:
     gko_blog (0.8.43)
-
-PATH
-  remote: ~/Github/gko_cms3/gko_categories
-  specs:
     gko_categories (0.8.43)
-
-PATH
-  remote: ~/Github/gko_cms3/gko_core
-  specs:
     gko_core (0.8.43)
       activesupport-slices (= 0.0.2)
       acts_as_indexed (~> 0.7.7)
@@ -69,29 +53,19 @@ PATH
       uglifier (~> 2.4.0)
       uuid (~> 2.3.7)
       will_paginate (~> 3.0.2)
-
-PATH
-  remote: ~/Github/gko_cms3/gko_documents
-  specs:
     gko_documents (0.8.43)
       dragonfly (~> 0.9.8)
       rack-cache (>= 0.5.3)
-
-PATH
-  remote: ~/Github/gko_cms3/gko_features
-  specs:
     gko_features (0.8.43)
-
-PATH
-  remote: ~/Github/gko_cms3/gko_inquiries
-  specs:
     gko_inquiries (0.8.43)
       filters_spam (~> 0.2)
-
-PATH
-  remote: ~/Github/gko_cms3/gko_stickers
-  specs:
     gko_stickers (0.8.43)
+
+GIT
+  remote: git@github.com:regisbruggheman/gko_realty.git
+  revision: 5b5e5e06a2951374a696f71ebdf7a9443a6220f6
+  specs:
+    gko_realty (0.4.92)
 
 GEM
   remote: https://rubygems.org/
